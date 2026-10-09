@@ -4,19 +4,19 @@ import java.util.concurrent.atomic.AtomicLong
 
 class PlacemarkStore {
 
-    private val placemarks = ArrayList<PlacedMark>()
+    private val placemarks = ArrayList<PlacemarkModel>()
     private val lastId = AtomicLong(0L)
 
-    fun findAll(): List<PlacedMark> {
+    fun findAll(): List<PlacemarkModel> {
         return placemarks
     }
 
-    fun create(placemark: PlacedMark) {
+    fun create(placemark: PlacemarkModel) {
         placemark.id = lastId.incrementAndGet()
         placemarks.add(placemark)
     }
 
-    fun update(placemark: PlacedMark): Boolean {
+    fun update(placemark: PlacemarkModel): Boolean {
         val foundPlacemark = findOne(placemark.id)
         return if (foundPlacemark != null) {
             foundPlacemark.title = placemark.title
@@ -39,7 +39,7 @@ class PlacemarkStore {
         }
     }
 
-    fun findOne(id: Long): PlacedMark? {
+    fun findOne(id: Long): PlacemarkModel? {
         return placemarks.find { p -> p.id == id }
     }
 }
