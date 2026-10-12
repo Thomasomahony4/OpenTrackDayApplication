@@ -1,4 +1,4 @@
-package com.example.opentrackdayapplication.Models
+package com.example.opentrackdayapplication.models
 
 
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.opentrackdayapplication.R
 
 class AddEditActivity : AppCompatActivity() {
 

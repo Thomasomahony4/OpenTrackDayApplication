@@ -1,4 +1,4 @@
-package com.example.opentrackdayapplication.Models
+package com.example.opentrackdayapplication.models
 
 
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.opentrackdayapplication.R
 
 class PlacedMarkAdapter(
     private var marks: List<PlacemarkModel>,

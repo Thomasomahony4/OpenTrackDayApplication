@@ -13,15 +13,15 @@
         android:theme="@style/Theme.OpenTrackDayApplication">
 
         <activity
-            android:name="Models.AddEditActivity"
+            android:name=".models.AddEditActivity"
             android:exported="false" />
 
         <activity
-            android:name="Models.MarkListActivity"
+            android:name=".models.MarkListActivity"
             android:exported="false" />
 
         <activity
-            android:name="Models.MainActivity"
+            android:name=".models.MainActivity"
             android:exported="true">
 
             <intent-filter>

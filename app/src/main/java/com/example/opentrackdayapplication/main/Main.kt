@@ -1,8 +1,8 @@
-package com.example.opentrackdayapplication.Main
+package com.example.opentrackdayapplication.main
 
 
-import com.example.opentrackdayapplication.Models.PlacemarkStore
-import com.example.opentrackdayapplication.Models.PlacemarkModel
+import com.example.opentrackdayapplication.models.PlacemarkStore
+import com.example.opentrackdayapplication.models.PlacemarkModel
 
 val store = PlacemarkStore()
 
