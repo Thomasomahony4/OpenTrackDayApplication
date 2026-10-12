@@ -1,4 +1,4 @@
-package com.example.opentrackdayapplication.Models
+package com.example.opentrackdayapplication.models
 
 import java.util.concurrent.atomic.AtomicLong
 

@@ -1,4 +1,4 @@
-package com.example.opentrackdayapplication.Models
+package com.example.opentrackdayapplication.models
 
 /**
  * Data class representing a single Placemark item.
