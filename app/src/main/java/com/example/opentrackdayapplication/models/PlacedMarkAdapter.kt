@@ -26,6 +26,9 @@ class PlacedMarkAdapter(
 
         val coordinatesText: TextView =
             itemView.findViewById(R.id.coordinatesText)
+
+        val categoryText: TextView =
+            itemView.findViewById(R.id.categoryText)
     }
 
     override fun onCreateViewHolder(
@@ -58,6 +61,9 @@ class PlacedMarkAdapter(
 
         holder.coordinatesText.text =
             "X: ${mark.x}, Y: ${mark.y}"
+
+        holder.categoryText.text =
+            mark.category
 
         holder.itemView.setOnClickListener {
 

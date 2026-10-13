@@ -19,6 +19,8 @@ class AddEditActivity : AppCompatActivity() {
     private lateinit var xInput: EditText
     private lateinit var yInput: EditText
 
+    private lateinit var categoryInput: AutoCompleteTextView
+
     private var editingId: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +42,9 @@ class AddEditActivity : AppCompatActivity() {
 
         val category = resources.getStringArray(R.array.categoryArray)
 
-        val autocompleteTV =
-            findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+        categoryInput =
+            findViewById(R.id.autoCompleteTextView)
+
 
         val arrayAdapter = ArrayAdapter(
             this,
@@ -49,10 +52,10 @@ class AddEditActivity : AppCompatActivity() {
             category
         )
 
-        autocompleteTV.setAdapter(arrayAdapter)
+        categoryInput.setAdapter(arrayAdapter)
 
-        autocompleteTV.setOnClickListener {
-            autocompleteTV.showDropDown()
+        categoryInput.setOnClickListener {
+            categoryInput.showDropDown()
         }
 
         val saveButton =
@@ -104,6 +107,7 @@ class AddEditActivity : AppCompatActivity() {
         descriptionInput.setText(mark.desc)
         xInput.setText(mark.x.toString())
         yInput.setText(mark.y.toString())
+        categoryInput.setText(mark.category)
     }
 
     private fun saveMark() {
@@ -135,13 +139,22 @@ class AddEditActivity : AppCompatActivity() {
             return
         }
 
+        val category = categoryInput.text.toString().trim()
+
+        if (category.isEmpty()) {
+            categoryInput.error = "Please select a category"
+            return
+        }
+
+
         if (editingId == null) {
 
             val mark = PlacemarkModel(
                 title = title,
                 desc = description,
                 x = x,
-                y = y
+                y = y,
+                category = category
             )
 
             Timber.d("Creating mark id=${mark.id}, title=${mark.title}")
@@ -160,7 +173,8 @@ class AddEditActivity : AppCompatActivity() {
                 title = title,
                 desc = description,
                 x = x,
-                y = y
+                y = y,
+                category = category
             )
 
             AppData.placedMarks.update(mark)
