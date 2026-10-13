@@ -2,6 +2,8 @@ package com.example.opentrackdayapplication.models
 
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -35,6 +37,23 @@ class AddEditActivity : AppCompatActivity() {
 
         yInput =
             findViewById(R.id.yInput)
+
+        val category = resources.getStringArray(R.array.categoryArray)
+
+        val autocompleteTV =
+            findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+
+        val arrayAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_dropdown_item_1line,
+            category
+        )
+
+        autocompleteTV.setAdapter(arrayAdapter)
+
+        autocompleteTV.setOnClickListener {
+            autocompleteTV.showDropDown()
+        }
 
         val saveButton =
             findViewById<Button>(R.id.saveButton)

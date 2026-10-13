@@ -4,14 +4,15 @@ package com.example.opentrackdayapplication.models
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.opentrackdayapplication.R
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 
 class PlacedMarkAdapter(
     private var marks: List<PlacemarkModel>,
-    private val listener: OnMarkListener
+    private val listener: OnMarkListener,
 ) : RecyclerView.Adapter<PlacedMarkAdapter.MarkViewHolder>() {
 
     class MarkViewHolder(itemView: View) :
@@ -25,8 +26,6 @@ class PlacedMarkAdapter(
 
         val coordinatesText: TextView =
             itemView.findViewById(R.id.coordinatesText)
-
-
     }
 
     override fun onCreateViewHolder(
@@ -89,4 +88,5 @@ class PlacedMarkAdapter(
         marks = newMarks
         notifyDataSetChanged()
     }
+
 }

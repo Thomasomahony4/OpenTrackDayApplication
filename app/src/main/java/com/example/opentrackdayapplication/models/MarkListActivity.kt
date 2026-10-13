@@ -36,7 +36,7 @@ class MarkListActivity : AppCompatActivity() {
                     deleteMark(mark)
                     return true
                 }
-            }
+            },
         )
 
         recyclerView.layoutManager =
