@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.opentrackdayapplication.R
+import timber.log.Timber
 
 class AddEditActivity : AppCompatActivity() {
 
@@ -66,6 +67,7 @@ class AddEditActivity : AppCompatActivity() {
 
         val mark =
             AppData.placedMarks.findOne(id)
+        Timber.d("found mark id=${mark}}")
 
         if (mark == null) {
 
@@ -123,6 +125,7 @@ class AddEditActivity : AppCompatActivity() {
                 y = y
             )
 
+            Timber.d("Creating mark id=${mark.id}, title=${mark.title}")
             AppData.placedMarks.create(mark)
 
             Toast.makeText(
