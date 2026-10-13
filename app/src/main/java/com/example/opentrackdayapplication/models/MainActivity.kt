@@ -1,14 +1,19 @@
 package com.example.opentrackdayapplication.models
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.CompoundButton
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.widget.Button
-import android.content.Intent
 import com.example.opentrackdayapplication.R
+import com.google.android.material.switchmaterial.SwitchMaterial
 import timber.log.Timber
+import java.util.Objects
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +26,23 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val switchBtn = findViewById<SwitchMaterial?>(R.id.switchBtn)
+
+        switchBtn.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
+            override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+                // checking if the switch is turned on
+
+                if (isChecked) {
+                    // setting theme to night mode
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    // setting theme to light theme
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+            }
+        })
+
         val viewMarksButton =
             findViewById<Button>(R.id.viewMarksButton)
 
