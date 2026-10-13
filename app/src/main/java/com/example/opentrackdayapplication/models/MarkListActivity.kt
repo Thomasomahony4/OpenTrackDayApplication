@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.opentrackdayapplication.R
+import timber.log.Timber
 
 class MarkListActivity : AppCompatActivity() {
 
@@ -27,9 +28,11 @@ class MarkListActivity : AppCompatActivity() {
 
             listener = object : PlacedMarkAdapter.OnMarkListener {
                 override fun onMarkClick(mark: PlacemarkModel) {
+                    Timber.d("Editing mark id=${mark.id}, title=${mark.title}")
                     editMark(mark)
                 }
                 override fun onMarkLongClick(mark: PlacemarkModel): Boolean {
+                    Timber.d("Deleting mark id=${mark.id}, title=${mark.title}")
                     deleteMark(mark)
                     return true
                 }
