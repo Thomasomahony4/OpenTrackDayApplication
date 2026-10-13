@@ -22,14 +22,17 @@ class MarkListActivity : AppCompatActivity() {
             findViewById(R.id.marksRecyclerView)
 
         adapter = PlacedMarkAdapter(
+
             marks = AppData.placedMarks.findAll(),
 
-            onEdit = { mark ->
-                editMark(mark)
-            },
-
-            onDelete = { mark ->
-                deleteMark(mark)
+            listener = object : PlacedMarkAdapter.OnMarkListener {
+                override fun onMarkClick(mark: PlacemarkModel) {
+                    editMark(mark)
+                }
+                override fun onMarkLongClick(mark: PlacemarkModel): Boolean {
+                    deleteMark(mark)
+                    return true
+                }
             }
         )
 
