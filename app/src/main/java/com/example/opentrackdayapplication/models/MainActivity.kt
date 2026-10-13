@@ -29,19 +29,16 @@ class MainActivity : AppCompatActivity() {
 
         val switchBtn = findViewById<SwitchMaterial?>(R.id.switchBtn)
 
-        switchBtn.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
-            override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-                // checking if the switch is turned on
-
-                if (isChecked) {
-                    // setting theme to night mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                } else {
-                    // setting theme to light theme
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                }
+        switchBtn.setOnCheckedChangeListener { Null, isChecked ->
+            // checking if the switch is turned on
+            if (isChecked) {
+                // setting theme to night mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                // setting theme to light theme
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-        })
+        }
 
         val viewMarksButton =
             findViewById<Button>(R.id.viewMarksButton)
