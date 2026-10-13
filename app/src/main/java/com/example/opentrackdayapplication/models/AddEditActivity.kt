@@ -2,6 +2,8 @@ package com.example.opentrackdayapplication.models
 
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -16,6 +18,8 @@ class AddEditActivity : AppCompatActivity() {
     private lateinit var descriptionInput: EditText
     private lateinit var xInput: EditText
     private lateinit var yInput: EditText
+
+    private lateinit var categoryInput: AutoCompleteTextView
 
     private var editingId: Long? = null
 
@@ -35,6 +39,24 @@ class AddEditActivity : AppCompatActivity() {
 
         yInput =
             findViewById(R.id.yInput)
+
+        val category = resources.getStringArray(R.array.categoryArray)
+
+        categoryInput =
+            findViewById(R.id.autoCompleteTextView)
+
+
+        val arrayAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_dropdown_item_1line,
+            category
+        )
+
+        categoryInput.setAdapter(arrayAdapter)
+
+        categoryInput.setOnClickListener {
+            categoryInput.showDropDown()
+        }
 
         val saveButton =
             findViewById<Button>(R.id.saveButton)
@@ -85,6 +107,7 @@ class AddEditActivity : AppCompatActivity() {
         descriptionInput.setText(mark.desc)
         xInput.setText(mark.x.toString())
         yInput.setText(mark.y.toString())
+        categoryInput.setText(mark.category)
     }
 
     private fun saveMark() {
@@ -116,13 +139,22 @@ class AddEditActivity : AppCompatActivity() {
             return
         }
 
+        val category = categoryInput.text.toString().trim()
+
+        if (category.isEmpty()) {
+            categoryInput.error = "Please select a category"
+            return
+        }
+
+
         if (editingId == null) {
 
             val mark = PlacemarkModel(
                 title = title,
                 desc = description,
                 x = x,
-                y = y
+                y = y,
+                category = category
             )
 
             Timber.d("Creating mark id=${mark.id}, title=${mark.title}")
@@ -141,7 +173,8 @@ class AddEditActivity : AppCompatActivity() {
                 title = title,
                 desc = description,
                 x = x,
-                y = y
+                y = y,
+                category = category
             )
 
             AppData.placedMarks.update(mark)
