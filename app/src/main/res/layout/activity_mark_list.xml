@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".models.MarkListActivity">
 
     <LinearLayout
@@ -24,9 +24,52 @@
             android:id="@+id/marksRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/openWheelFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Open Wheel" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/GTFilter"
+                    style="GT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="GT" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/rallyFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Rally" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/kartingFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Karting" />
+            </LinearLayout>
+
+        </com.google.android.material.chip.ChipGroup>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"

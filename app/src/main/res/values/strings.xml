@@ -2,10 +2,10 @@
     <string name="app_name">OpenTrackDayApplication</string>
 
     <string-array name="categoryArray">
+        <item>Open Wheel</item>
+        <item>GT</item>
         <item>Rally</item>
         <item>Karting</item>
-        <item>GT</item>
-        <item>Open Wheel</item>
     </string-array>
 
 </resources>
